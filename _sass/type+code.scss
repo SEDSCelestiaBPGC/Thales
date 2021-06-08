@@ -1,6 +1,4 @@
-//
 // Typography
-//
 // stylelint-disable primer/selector-no-utility, primer/no-override, selector-no-type, selector-max-type
 
 h1,
@@ -65,9 +63,9 @@ h6,
 
 
 
-//
+
 // Code and syntax highlighting
-//
+
 // stylelint-disable selector-no-qualifying-type, declaration-block-semicolon-newline-after,declaration-block-single-line-max-declarations, selector-no-type, selector-max-type
 
 code {
@@ -355,9 +353,9 @@ figure.highlight {
   color: #2aa198;
 } // literal.number.integer.long //
 
-//
+
 // Code examples (rendered)
-//
+
 
 .code-example {
   padding: $sp-3;
