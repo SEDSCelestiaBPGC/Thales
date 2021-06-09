@@ -21,19 +21,22 @@ All images must have `onerror`
 ```html
 <img src="" srcset="" alt="About the image" onerror="this.src = 'someOtherImage'" />
 ```
-as a fallback to display another image of same dimensions in case this doesn't load & an alt attribute for the visually impaired
+as a fallback to display another image of same dimensions in case this doesn't load & an alt attribute for the visually impaired.
 
-# Use of <Picture> instead of <img>
+
+
+
+# Use of \<Picture> instead of \<img>
 
 ## Issues with Image resolutions
 Image issues can be grouped into two major issues;
 
-* Resolution Switching — Problems of serving smaller size images for narrow screen devices.
-* Art Direction — Problem of showing different images on different screen sizes.
+- Resolution Switching — Problems of serving smaller size images for narrow screen devices.
+- Art Direction — Problem of showing different images on different screen sizes.
 
 ## Resolution Switching using ``srcset`` & sizes Attributes
 
-Suppose you use a simple Img tag for high-res images. In that case, that same image is used in each device your application runs, and indeed it will result in performance issues in devices with lower screen resolutions like mobile devices.
+When you use a simple Img tag for high-res images, that same image is used in each device your application runs, and may result in performance issues in devices with lower screen resolutions like mobile devices.
 
 This could result in longer image loading times and top to bottom partial image loadings.
 
@@ -64,6 +67,7 @@ The ``sizes`` attribute defines the space that the image will take up on the scr
 Having said that, it is advisable not to use the Picture tag just for Resolution Switching since the same can be achieved using the updated version of the Img tag (which has more browser support)
 
 But, in most cases, we need to handle both Resolution Switching and Art Direction simultaneously, and the ``picture`` tag is the best solution.
+&nbsp;   
 
 
 ## Art Direction Using media Attribute
@@ -117,5 +121,47 @@ The following example shows a complete example of using Art Direction and Resolu
 If the screen orientation is landscape browser will show the images from the first image set, and if the orientation is portrait browser will use the second set. In addition to that, you can use ``media`` attribute with ``max-width`` and ``min-width`` parameters:
 
 ```
-
+<picture>
+     <source media="(max-width: 767px)" ....>
+     <source media="(min-width: 768px)" ....>
+</picture>
 ```
+
+The last ``img`` tag is there for backward compatibility for browsers that do not support ``picture`` tags.  
+
+  
+## Using with Partially Supported Image Types
+With the rapid development of technologies, different types of modern image types are introduced day by day. Some of these types such as ``webp``, ``svg`` , and ``avif`` provide a higher user experience level.
+
+On the other hand, there are limitations in some browsers on these modern image types, and things will get backfired if we don’t use the compatible image types.
+
+But, we can easily address this issue by using Picture tag since it allows us to include multiple sources inside that.
+
+```dotnetcli
+<picture>  
+    <source srcset="test.avif" type="image/avif">
+    <source srcset="test.webp" type="image/webp">
+    <img src="test.png" alt="test image">
+</picture>
+```
+
+The above example includes three image types from ``avif``, ``webp``, and ``png`` formats. First, the browser will try ``avif`` format, and if that fails, it will try ``webp`` format. If the browser does not support both of these, it will use ``png`` image.
+
+Things got more interesting about picture tag when Chrome announced that “DevTools will provide two new emulations in the Rendering tab to emulate partially supported image types”.
+
+From Chrome 88 Onwards, You Can Use Chrome DevTools to Check Browser Compatibility with Image Types.  
+
+&nbsp;  
+![Using Chrome DevTools for Image Compatibility Emulations](https://i.imgur.com/uDdNJ7O.png)
+
+&nbsp;  
+
+## tl;dr and Conclusion
+
+If we use the provided attributes like ``srcset`` and ``size`` wisely, we can get the maximum out of the ``img`` tag. For example, we can resolve Resolution Switching only using the ``img`` tag.
+
+On the other hand, we can use ``picture`` tag to achieve both Resolution Switching and Art Direction easily using media queries and other provided attributes.
+
+The ability to work with partially supported image types and Chrome DevTools support can be recognized as additional plus points for ``picture`` tag.
+
+Hence one must carefully think and use most suitable element based on requirements.
