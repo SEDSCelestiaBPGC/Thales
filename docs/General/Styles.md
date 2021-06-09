@@ -40,6 +40,8 @@ When you use a simple Img tag for high-res images, that same image is used in ea
 
 This could result in longer image loading times and top to bottom partial image loadings.
 
+![Top to bottom image loading issue](https://i.imgur.com/uwCiXkM.gif)
+
 This issue can be easily addressed with the ``picture`` tag by using ``srcset`` and ``sizes`` attributes.
 
 ```
