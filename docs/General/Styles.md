@@ -88,4 +88,34 @@ Then we can use ``media`` attribute to define different media conditions where t
 
 The following example shows a complete example of using Art Direction and Resolution Switching using a ``picture`` tag.
 
+```
+<picture>
+     
+   <source media="(orientation: landscape)"
+             
+      srcset="land-small-car-image.jpg 200w,
+              land-medium-car-image.jpg 600w,
+              land-large-car-image.jpg 1000w"
+             
+      sizes="(min-width: 700px) 500px,
+             (min-width: 600px) 400px,
+             100vw">
+     
+   <source media="(orientation: portrait)"
+             
+      srcset="port-small-car-image.jpg 700w,
+              port-medium-car-image.jpg 1200w,
+              port-large-car-image.jpg 1600w"
+             
+      sizes="(min-width: 768px) 700px,
+             (min-width: 1024px) 600px,
+             500px">
+     
+   <img src="land-medium-car-image.jpg" alt="Car"></picture>
+```
 
+If the screen orientation is landscape browser will show the images from the first image set, and if the orientation is portrait browser will use the second set. In addition to that, you can use ``media`` attribute with ``max-width`` and ``min-width`` parameters:
+
+```
+
+```
