@@ -131,13 +131,14 @@ The last ``img`` tag is there for backward compatibility for browsers that do no
 
   
 ## Using with Partially Supported Image Types
+
 With the rapid development of technologies, different types of modern image types are introduced day by day. Some of these types such as ``webp``, ``svg`` , and ``avif`` provide a higher user experience level.
 
 On the other hand, there are limitations in some browsers on these modern image types, and things will get backfired if we don’t use the compatible image types.
 
 But, we can easily address this issue by using Picture tag since it allows us to include multiple sources inside that.
 
-```dotnetcli
+```
 <picture>  
     <source srcset="test.avif" type="image/avif">
     <source srcset="test.webp" type="image/webp">
